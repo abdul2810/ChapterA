@@ -267,7 +267,14 @@ function Divider() {
 /* ---------- Problem ---------- */
 // function Problem() {
 //   return (
-//     <section className="bg-ink text-paper">
+//     <section
+//       className="text-paper position-relative overflow-hidden"
+//       style={{
+//         backgroundImage: `linear-gradient(rgba(14,14,14,0.88), rgba(14,14,14,-0.08)), url(${bgProblem})`,
+//         backgroundSize: "contain",
+//         backgroundPosition: "center",
+//       }}
+//     >
 //       <Container className="section-pad">
 //         <Row className="g-4">
 //           <Col lg={5}>
@@ -317,61 +324,142 @@ function Divider() {
 
 function Problem() {
   return (
-    <section
-      className="text-paper position-relative overflow-hidden"
-      style={{
-        backgroundImage: `linear-gradient(rgba(14,14,14,0.88), rgba(14,14,14,-0.08)), url(${bgProblem})`,
-        backgroundSize: "contain",
-        backgroundPosition: "center",
-      }}
-    >
-      <Container className="section-pad">
-        <Row className="g-4">
-          <Col lg={5}>
-            <p className="eyebrow">The honest truth</p>
-            <h2 className="h-section text-paper mt-3">
-              You finished the writing.
-              <br />
-              <span className="fst-italic text-gold">Now comes the difficult part.</span>
-            </h2>
-          </Col>
-          <Col lg={7}>
-            <div style={{ color: "rgba(247,243,236,0.75)", lineHeight: 1.7, fontSize: "1.05rem" }}>
-              <p>
-                Most authors close the last chapter expecting clarity, and instead
-                find a wall — editing standards they were never taught, formatting
-                traps that break on every device, cover briefs they don't know how
-                to write, and distribution paperwork that quietly buries the book.
-              </p>
-              <p>
-                ChapterA was built for exactly that moment. A small editorial team,
-                assisted by careful AI, takes your draft and walks it through every
-                stage that stands between a finished manuscript and a real,
-                royalty-earning book.
-              </p>
-            </div>
-            <Row className="g-3 pt-3" style={{ color: "rgba(247,243,236,0.85)", fontSize: "0.9rem" }}>
-              {[
-                "Inconsistent edits & typos",
-                "Messy typography & spacing",
-                "Cover design uncertainty",
-                "Confusing publishing requirements",
-                "Royalty structures left unclear",
-                "No clear timeline or next step",
-              ].map((p) => (
-                <Col sm={6} key={p} className="d-flex align-items-start gap-2">
-                  <span style={{ marginTop: 10, height: 1, width: 16, background: "var(--gold)", flexShrink: 0 }} />
-                  <span>{p}</span>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-    </section>
+    <>
+      <style>
+        {`
+
+          @media (max-width: 768px) {
+
+            .problem-section {
+              background-size: cover !important;
+              background-position: center !important;
+            }
+
+            .problem-heading {
+              font-size: 2rem !important;
+              line-height: 1.2 !important;
+            }
+
+            .problem-text {
+              font-size: 0.95rem !important;
+              line-height: 1.7 !important;
+            }
+
+            .problem-points {
+              margin-top: 1rem !important;
+            }
+
+            .problem-point-text {
+              font-size: 0.88rem !important;
+              line-height: 1.5 !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+
+            .problem-heading {
+              font-size: 1.7rem !important;
+            }
+
+            .problem-text {
+              font-size: 0.9rem !important;
+            }
+
+            .problem-points .col-sm-6 {
+              width: 100%;
+            }
+          }
+        `}
+      </style>
+
+      <section
+        className="problem-section text-paper position-relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(14,14,14,0.88), rgba(14,14,14,-0.08)), url(${bgProblem})`,
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+        }}
+      >
+        <Container className="section-pad">
+          <Row className="g-4">
+            <Col lg={5}>
+              <p className="eyebrow">The honest truth</p>
+
+              <h2 className="problem-heading h-section text-paper mt-3">
+                You finished the writing.
+                <br />
+                <span className="fst-italic text-gold">
+                  Now comes the difficult part.
+                </span>
+              </h2>
+            </Col>
+
+            <Col lg={7}>
+              <div
+                className="problem-text"
+                style={{
+                  color: "rgba(247,243,236,0.75)",
+                  lineHeight: 1.7,
+                  fontSize: "1.05rem",
+                }}
+              >
+                <p>
+                  Most authors close the last chapter expecting clarity, and
+                  instead find a wall — editing standards they were never
+                  taught, formatting traps that break on every device, cover
+                  briefs they don't know how to write, and distribution
+                  paperwork that quietly buries the book.
+                </p>
+
+                <p>
+                  ChapterA was built for exactly that moment. A small editorial
+                  team, assisted by careful AI, takes your draft and walks it
+                  through every stage that stands between a finished manuscript
+                  and a real, royalty-earning book.
+                </p>
+              </div>
+
+              <Row
+                className="problem-points g-3 pt-3"
+                style={{
+                  color: "rgba(247,243,236,0.85)",
+                  fontSize: "0.9rem",
+                }}
+              >
+                {[
+                  "Inconsistent edits & typos",
+                  "Messy typography & spacing",
+                  "Cover design uncertainty",
+                  "Confusing publishing requirements",
+                  "Royalty structures left unclear",
+                  "No clear timeline or next step",
+                ].map((p) => (
+                  <Col
+                    sm={6}
+                    key={p}
+                    className="d-flex align-items-start gap-2"
+                  >
+                    <span
+                      style={{
+                        marginTop: 10,
+                        height: 1,
+                        width: 16,
+                        background: "var(--gold)",
+                        flexShrink: 0,
+                      }}
+                    />
+
+                    <span className="problem-point-text">{p}</span>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </>
   );
 }
-
 
 /* ---------- Workflow ---------- */
 const STEPS: {
